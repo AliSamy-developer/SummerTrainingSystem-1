@@ -16,6 +16,8 @@
                 <a asp-controller="Account" asp-action="CompanyProfile" asp-route-id="@Model.CompanyId">
                     @Model.Company.Name
                 </a> 
+                <input hidden id="CompanyName" asp-for="Company.Email" />
+                <input type="hidden" name="MyEmail" id="MyEmail" value="@User.Identity.Name" />
                 @(Model.Company.City), @(Model.Company.Country)
             </div>
             <span class="text-secondary">
@@ -45,9 +47,13 @@
                 }
                 else
                 {
-                    <a class="btn btn-primary btn-lg" asp-controller="Trainings" asp-action="ApplyForTraining" asp-route-trid="@Model.Id">
+                    <a class="btn btn-primary btn-lg" href="javascript:void(0);"
+                       onclick="applyForTrainingAndSendMessage(event, '@Url.Action("ApplyForTraining", "Trainings", new { trid = Model.Id })',@Model.Id)">
                         Apply
                     </a>
+                    @* <a class="btn btn-primary btn-lg" asp-controller="Trainings" asp-action="ApplyForTraining" asp-route-trid="@Model.Id">
+                        Apply
+                    </a> *@
                 }
             }
         </div>
@@ -65,4 +71,6 @@
 </div>
 @section Scripts{
     <script src="~/js/trainingForCompany.js"></script>
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script src="~/js/notification.js"></script>
 }

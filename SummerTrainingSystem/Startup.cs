@@ -76,6 +76,7 @@ namespace SummerTrainingSystem
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapHub<ChatHub>("/chatHub");
+                endpoints.MapHub<NotificationHub>("/notificationHub");
             });
         }
     }

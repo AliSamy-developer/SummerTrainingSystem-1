@@ -1,5 +1,54 @@
-﻿
+﻿<style>
+    #notificationWrapper {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .notification-body {
+        background-color: #ffcc00;
+        color: #000;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .notification-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .notification-img img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .notification-details {
+        flex-grow: 1;
+    }
+
+    .notification-content {
+        margin-top: 10px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+</style>
 <nav class="bg-dark py-4">
+    
+    
     <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand me-1" 
         asp-controller="Home" 
@@ -15,3 +64,4 @@
         <partial name="_LoginPartial" />
     </div>
 </nav>
+<div class="messages" id="notificationWrapper"></div>
